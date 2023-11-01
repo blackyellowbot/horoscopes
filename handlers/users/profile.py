@@ -44,7 +44,7 @@ async def get_pod(message: types.Message):
 
 @dp.callback_query_handler(edit_call.filter())
 async def show_edit(call: CallbackQuery, callback_data: dict):
-    print(callback_data)
+    # print(callback_data)
     dto = int(callback_data['items'])
     if dto == 1:
         updateSubs(0, call.from_user.id)

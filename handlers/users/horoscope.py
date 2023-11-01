@@ -51,7 +51,7 @@ async def get_regs(message: types.Message):
         "<span style=\"font-size: 15px;\">", "\n").replace("</span>", "").replace("<br>","")
     m_set = gora_a.split("<h2>")
 
-    print(len(m_set))
+    # print(len(m_set))
     title = x.json()['h1']
 
     await message.answer(f"" + title)
@@ -99,7 +99,7 @@ async def get_man(message: types.Message):
     titl = x.json()['content']['title']
     await message.answer(titl)
     bodys = x.json()['content']['text'][0]['content']
-    print(bodys)
+    # print(bodys)
     await message.answer(bodys)
 
 
@@ -131,5 +131,5 @@ async def get_man(message: types.Message):
     await message.answer(titl)
     bodys = x.json()['content']['text']
     for conta in bodys:
-        print(conta['content'])
+        # print(conta['content'])
         await message.answer(conta['content'])

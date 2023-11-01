@@ -33,7 +33,7 @@ def setInterval(interval):
 
                     now = datetime.datetime.now()
                     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                    print("TMRS = =  IM ", dt_string)
+                    # print("TMRS = =  IM ", dt_string)
 
             t = threading.Thread(target=loop)
             t.daemon = True  # stop if the program exits
@@ -47,13 +47,13 @@ def setInterval(interval):
 
 @setInterval(300)
 def pinger():
-    print("TMRS = = ")
+    # print("TMRS = = ")
     pymysql_connection.ping(reconnect=True)
 
 
 now = datetime.datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-print("TMRS =  P = ", dt_string)
+# print("TMRS =  P = ", dt_string)
 pinger()
 
 
@@ -345,7 +345,7 @@ def delete_catalog_by_id(id: str):
 def get_pages(id: str):
     PARAMS = {'id': id}
     photos = []
-    print("PRAM = ", id)
+    # print("PRAM = ", id)
 
     x = requests.get('https://cp.oriflames.ml/api/catalog/getitem?X-API-KEY=aza', PARAMS)
     json = x.json()

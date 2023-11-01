@@ -29,25 +29,25 @@ show_item = CallbackData("catalog_item", "zdk")
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
     name = ifUser(message.from_user.id)
-    print(name )
+    # print(name )
     if ifUser(message.from_user.id) is False:
         await message.answer(message.from_user.full_name + "Выбери знак зодиака", reply_markup=langs)
     else:
         if user_access(message.from_user.id):
             await message.answer(f'Выбери меню,  {message.from_user.username}', reply_markup=start_menus)
-            print("MA")
+            # print("MA")
         else:
             await message.answer(f'Выбери меню,  {message.from_user.username}', reply_markup=start_menus)
-            print("UM")
+            # print("UM")
 
 
 
 @dp.callback_query_handler(show_item.filter())
 async def process_callback_kb1btn1(call: CallbackQuery, callback_data: dict):
-    print(callback_data)
+    # print(callback_data)
 
     str = callback_data['zdk']
     repl = str.split('_')
-    print(repl[2])
+    # print(repl[2])
     add_user(call.from_user.username, call.from_user.id, repl[2], 0, 1)
     await call.message.answer(f'Выбери меню,  {call.from_user.username}', reply_markup=start_menus)
