@@ -1,0 +1,9 @@
+aiogram<3.0
+environs~=8.0.0
+PyMySQL
+requests
+cyrtranslit
+python-slugify
+transliterate
+aioschedule
+apscheduler
