@@ -14,5 +14,5 @@ async def send_message():
 
 
 def shelude_job():
-    scheduler.add_job(send_message, 'cron', day_of_week='mon-sun', hour=20, minute=0o3)
+    scheduler.add_job(send_message, 'cron', day_of_week='mon-sun', hour=11, minute=15)
     # scheduler.schedulercheduleradd_job(send_message, 'interval', seconds=1000,)
