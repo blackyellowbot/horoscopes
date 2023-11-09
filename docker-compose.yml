@@ -1,6 +1,23 @@
 version: "3.1"
 
 services:
+  db:
+    container_name: database
+    image: sameersbn/postgresql:10-2
+    environment:
+      PG_PASSWORD: $POSTGRES_PASSWORD
+    restart: always
+    ports:
+       - "5439:5432"
+    networks:
+      - botnet
+
+    env_file:
+          - '.env'
+
+
+
+
   tgbot:
     container_name: horo
     build:
@@ -12,6 +29,9 @@ services:
       - botnet
     env_file:
       - ".env"
+    depends_on:
+      - db
+
 networks:
   botnet:
     driver: bridge
