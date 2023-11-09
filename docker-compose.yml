@@ -5,15 +5,18 @@ services:
     container_name: database
     image: sameersbn/postgresql:10-2
     environment:
-      PG_PASSWORD: $POSTGRES_PASSWORD
+        PG_PASSWORD: root
     restart: always
+    volumes:
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
     ports:
-       - "5439:5432"
+       - "5432:5432"
     networks:
       - botnet
 
     env_file:
           - '.env'
+
 
 
 
@@ -35,3 +38,5 @@ services:
 networks:
   botnet:
     driver: bridge
+#volumes:
+#  pgdata: { }
