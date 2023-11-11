@@ -8,3 +8,4 @@ transliterate
 aioschedule
 apscheduler
 betterlogging
+cryptography

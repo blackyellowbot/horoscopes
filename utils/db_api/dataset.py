@@ -10,11 +10,11 @@ from pymysql.cursors import DictCursor
 import requests
 
 pymysql_connection = pymysql.connect(
-    host='195.161.114.206',
+    host='192.168.0.13',
     # port=8889,
-    user='j31677409_horosk',
-    password='gjnjkjr76',
-    db='j31677409_horoskope',
+    user='horo',
+    password='gjnjkjr_76',
+    db='db_horo',
     # charset='utf8mb4',
 
     # write_timeout=60,

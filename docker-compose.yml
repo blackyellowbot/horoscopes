@@ -1,31 +1,53 @@
 version: "3.1"
 
 services:
-  db:
-    container_name: database
-    image: sameersbn/postgresql:10-2
+#  db:
+#    container_name: database
+#    image: sameersbn/postgresql:10-2
+#    environment:
+#        PG_PASSWORD: root
+#    restart: always
+#    volumes:
+#      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+#    ports:
+#       - "5432:5432"
+#    networks:
+#      - botnet
+#
+#    env_file:
+#          - '.env'
+  mysql:
+    image: mysql:latest
     environment:
-        PG_PASSWORD: root
-    restart: always
-    volumes:
-      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      MYSQL_ROOT_PASSWORD: gjnjkjr_1976
+      MYSQL_DATABASE: db_horo
+      MYSQL_USER: horo
+      MYSQL_PASSWORD: gjnjkjr_76
     ports:
-       - "5432:5432"
+        - "3306:3306"
+    restart: always
     networks:
-      - botnet
+       - botnet
 
-    env_file:
-          - '.env'
-
-
-
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      environment:
+        PMA_HOST: mysql
+        PMA_PORT: 3306
+      ports:
+        - "8080:80"
+      env_file:
+        - ".env"
+      depends_on:
+        - mysql
+      networks:
+         - botnet
 
 
   tgbot:
     container_name: horo
     build:
       context: .
-
     command: python horo.py
     restart: always
     networks:
@@ -33,7 +55,7 @@ services:
     env_file:
       - ".env"
     depends_on:
-      - db
+      - mysql
 
 networks:
   botnet:
