@@ -10,7 +10,7 @@ from pymysql.cursors import DictCursor
 import requests
 
 pymysql_connection = pymysql.connect(
-    host='192.168.0.13',
+    host='34.29.155.81',
     # port=8889,
     user='horo',
     password='gjnjkjr_76',
